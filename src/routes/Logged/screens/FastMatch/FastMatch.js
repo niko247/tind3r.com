@@ -21,9 +21,7 @@ type PropsType = WithLikeCounterPropsType & {
 @observer
 class FastMatch extends Component {
   componentDidMount() {
-    if (this.props.currentUser.goldAccount) {
-      recsStore.fetchFastMatch();
-    }
+    recsStore.fetchFastMatch();
   }
 
   props: PropsType;
@@ -45,14 +43,14 @@ class FastMatch extends Component {
 
     return (
       <div className="fast-match">
-        {currentUser.goldAccount ? (
+        { (
           recsStore.fastMatchCount === 0 ? (
             <h2>No one has liked you yet :[</h2>
           ) : (
-            recsStore.fastMatched.map(person => (
-              <div key={person._id} className={cx('fast-match__card')}>
+            recsStore.fastMatched.map(personFastMatch => (
+              <div key={personFastMatch._id} className={cx('fast-match__card')}>
                 <PersonCard
-                  person={person}
+                  person={personFastMatch}
                   small
                   onError={handleError}
                   onSuperlike={handleSuperlike}
@@ -67,8 +65,6 @@ class FastMatch extends Component {
               </div>
             ))
           )
-        ) : (
-          <h1>Buy Gold account to see likes!</h1>
         )}
       </div>
     );

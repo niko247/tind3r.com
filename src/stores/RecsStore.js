@@ -14,6 +14,7 @@ class RecsStore {
   loadMoreHandler = null;
 
   @observable persons: Array<Person> = [];
+  @observable fastMatchedPersons: Array<Person> = [];
   @observable is_fetching: boolean = false;
   @observable is_fetching_fast_match: boolean = false;
   @observable is_loading_more: boolean = false;
@@ -62,13 +63,18 @@ class RecsStore {
   async fetchFastMatch() {
     this.is_fetching_fast_match = true;
     try {
-      const { data } = await get('/v2/fast-match');
+      const { data } = await get('/v2/fast-match/teasers');
 
-      const results = map(data.data.results, r => r.user);
-
-      each(results, json => this.setPerson({ ...json, is_fast_match_found: true }, true));
+      this.fastMatchedPersons = data.data.results.map(result => new Person(this, {
+        _id: result.user._id,
+        photos: result.user.photos,
+        name: 'n/a',
+        is_fast_match_found: true,
+        hide_age: true,
+      }));
     } catch (e) {
       this.isError = true;
+      console.log('Error:', e);
     }
 
     this.is_fetching_fast_match = false;
@@ -125,8 +131,8 @@ class RecsStore {
   }
 
   @computed
-  get fastMatched(): Person[] {
-    return this.persons.filter(person => person.is_fast_match_found && !person.is_done);
+  get fastMatched() {
+    return this.fastMatchedPersons;
   }
 
   @computed

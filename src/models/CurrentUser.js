@@ -174,11 +174,11 @@ export class CurrentUser implements UserInterface {
     return null;
   }
 
-  @computed get likeReset(): ResetAtHelperType {
+   get likeReset(): ResetAtHelperType {
     return resetAtDateHelper(this.likeResetDate);
   }
 
-  @computed get superlikeReset(): ResetAtHelperType {
+  get superlikeReset(): ResetAtHelperType {
     return resetAtDateHelper(this.superlikeResetDate);
   }
 

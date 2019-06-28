@@ -1,0 +1,6 @@
+server:
+  port: 3005
+spring:
+  mvc:
+    favicon:
+      enabled: false

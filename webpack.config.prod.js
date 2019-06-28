@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const webpackConfig = require('./webpack.config.dev');
-const AssetsPlugin = require('assets-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 webpackConfig.module.rules[1].use = [
   { loader: 'style-loader' },
@@ -19,9 +19,10 @@ module.exports = Object.assign(webpackConfig, {
   ],
 
   output: Object.assign(webpackConfig.output, {
-    filename: '[name].[chunkhash].v2.js',
+    filename: '[name].js',
+    publicPath: '/',
   }),
-  devtool: 'source-map',
+  devtool: 'cheap-source-map',
 
   plugins: [
     new webpack.optimize.UglifyJsPlugin({
@@ -32,15 +33,6 @@ module.exports = Object.assign(webpackConfig, {
         comments: false,
       },
     }),
-    new AssetsPlugin({
-      path: path.join(__dirname, 'dist'),
-      processOutput: asset => (
-        JSON.stringify([
-          asset.vendor.js,
-          asset.main.js,
-        ])
-      ),
-    }),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production'),
@@ -49,6 +41,11 @@ module.exports = Object.assign(webpackConfig, {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: module => module.context && module.context.indexOf('node_modules') !== -1,
+    }),
+    new HtmlWebpackPlugin({
+      template: './index.html',
+      inject: 'body',
+      filename: 'index.html',
     }),
   ],
   devServer: {},

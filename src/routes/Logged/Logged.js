@@ -71,8 +71,6 @@ class Welcome extends Component {
     reportLocation(this.props.history.location);
 
     this.props.history.listen(reportLocation);
-
-    window.Headway.init(window.HW_config);
   }
 
   componentWillUpdate(nextProps: PropsType) {

@@ -13,7 +13,7 @@ const ab = require('express-ab');
 const config = require('./webpack.config.dev.js');
 
 const isDeveloping = process.env.NODE_ENV !== 'production';
-const port = isDeveloping ? 3000 : process.env.PORT;
+const port = isDeveloping ? 3005 : process.env.PORT;
 const app = express();
 
 app.set('views', path.join(process.cwd(), '/server/views'));
