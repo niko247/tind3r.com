@@ -1,0 +1,1 @@
+mvn_build.bat && mvn_run.bat

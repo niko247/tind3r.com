@@ -54,13 +54,16 @@ class App extends Component {
 
     window.onfocus = this.checkLogged;
   }
+  handleSmsConnect = () => {
+    this.checkLogged();
+  }
 
   render() {
     const { isInstalled, isFirstLogin, isOutdated } = this.state;
     if (isInstalled && !isOutdated) {
       if (isFirstLogin) {
         return (
-          <Welcome handleConnect={this.handleConnect} isInstalled={isInstalled} />
+          <Welcome handleConnect={this.handleConnect} handleSmsConnect={this.handleSmsConnect} isInstalled={isInstalled} />
         );
       }
 

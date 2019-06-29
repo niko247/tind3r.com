@@ -12,6 +12,34 @@
     display: inline-block;
   }
 
+  &__wrapper-phone {
+    margin-left: 25px;
+
+    input {
+      //width: 100%;
+      padding: 10px 15px;
+      background: #363d45;
+      color: #ccc;
+      border: none;
+      font-size: 14px;
+      border-radius: 5px;
+      outline: none;
+      margin-bottom: 10px;
+      display: inline-block;
+      width: 280px;
+    }
+
+    > div {
+      margin-top: 50px;
+    }
+    h2{
+      display: inline-block;
+      font-size: 25px;
+      margin-right: 5px;
+      vertical-align: middle;
+    }
+  }
+
   &__facebook {
     background-color: #0079ce;
     border: none;
@@ -26,7 +54,10 @@
     font-size: 14px;
     outline: none;
   }
-
+  &__facebook-inactive {
+    background-color: #cecece;
+    cursor: not-allowed;
+  }
   &__facebook--before {
     background-color: #0064ab;
     border-radius: 3px 0px 0px 3px;
@@ -41,7 +72,10 @@
     width: 50px;
     font-size: 20px;
   }
-
+  &__facebook--before-inactive {
+    background-color: #b7b7b7;
+    cursor: not-allowed;
+  }
   &__text {
     margin-bottom: 10px;
     color: $red;

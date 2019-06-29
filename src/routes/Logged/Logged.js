@@ -250,6 +250,19 @@ class Welcome extends Component {
                     <i className="fa fa-sign-out" />
                   </div>
                 </li>
+                <li className="logged__github">
+                  <a
+                    href="https://github.com/niko247/tind3r.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="logged__coffee-wrapper"
+                  >
+                    <div className="logged__coffee-icon">
+                      <img alt="cup" src="/assets/img/github.png" />
+                    </div>
+                    <div className="logged__coffee-text">Link to Github current fork</div>
+                  </a>
+                </li>
                 <li className="logged__coffee">
                   <a
                     href="https://ko-fi.com/A0851VB7"
