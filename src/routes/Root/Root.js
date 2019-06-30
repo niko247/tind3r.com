@@ -4,7 +4,7 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
-
+import { VERSION } from 'const';
 import Loader from 'components/Loader';
 
 import { checkIfInstalled, getTokenDate, getFacebookToken, checkVersion } from 'utils/runtime';
@@ -31,7 +31,7 @@ class App extends Component {
       }
 
       checkVersion((ver) => {
-        if (ver !== '0.3.0') {
+        if (ver !== VERSION) {
           this.setState({
             isOutdated: true,
           });

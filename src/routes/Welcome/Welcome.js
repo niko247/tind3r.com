@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import { Button, Classes } from '@blueprintjs/core';
 import DocumentTitle from 'react-document-title';
-
+import { VERSION } from 'const';
 import Login from 'components/Login';
 
 import './Welcome.scss';
@@ -24,7 +24,7 @@ export default class Welcome extends Component {
   handleInstall = () => {
     this.setState({ isButtonVisible: false });
 
-    window.open('/assets/tind3r_v3.zip');
+    window.open(`/assets/tind3r_${VERSION}.zip`);
   };
 
   renderButton() {

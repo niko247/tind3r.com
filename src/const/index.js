@@ -14,3 +14,4 @@ export const ACTION_TYPES = {
   PASS: 'pass',
   SUPERLIKE: 'superlike',
 };
+export const VERSION = '0.4.0';

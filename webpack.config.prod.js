@@ -19,7 +19,7 @@ module.exports = Object.assign(webpackConfig, {
   ],
 
   output: Object.assign(webpackConfig.output, {
-    filename: '[name].js',
+    filename: '[name].[chunkhash].v4.js',
     publicPath: '/',
   }),
   devtool: 'cheap-source-map',
