@@ -1,21 +1,21 @@
 /* eslint-disable no-param-reassign */
 import { EXT_ID } from 'const';
 
-const chromeRuntime = (type, url, params) =>
-  new Promise((resolve, reject) => {
-    chrome.runtime.sendMessage(EXT_ID(), { type, url, params }, (response) => {
-      if (!response) {
-        reject();
-        return;
-      }
+const chromeRuntime = (type, url, params, withToken) =>
+    new Promise((resolve, reject) => {
+      chrome.runtime.sendMessage(EXT_ID(), { type, url, params, withToken }, (response) => {
+        if (!response) {
+          reject();
+          return;
+        }
 
-      if (response.success) {
-        resolve(response.resp);
-      } else {
-        reject(response.resp);
-      }
+        if (response.success) {
+          resolve(response.resp);
+        } else {
+          reject(response.resp);
+        }
+      });
     });
-  });
 
 chrome.runtime.sendMessage(EXT_ID(), {
   type: 'CONFIG',
@@ -41,11 +41,11 @@ chrome.runtime.sendMessage(EXT_ID(), {
   }`,
 });
 
-export const get = (url, params) => chromeRuntime('GET', url, params);
+export const get = (url, params, withToken = true) => chromeRuntime('GET', url, params, withToken);
 
-export const post = (url, params) => chromeRuntime('POST', url, params);
+export const post = (url, params, withToken = true) => chromeRuntime('POST', url, params, withToken);
 
-export const del = (url, params) => chromeRuntime('DELETE', url, params);
+export const del = (url, params, withToken = true) => chromeRuntime('DELETE', url, params, withToken);
 
 export default {
   get,

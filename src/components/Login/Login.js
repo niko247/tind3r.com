@@ -40,14 +40,14 @@ class Login extends Component {
 
   handlePhoneNumber = () => {
     const phoneNumber = this.phoneInputRef.value;
-
-
-    API.post('/v2/auth/sms/send?auth_type=sms&locale=en', { phone_number: phoneNumber }).then(() => {
+    this.tokenLessPost('/v2/auth/sms/send?auth_type=sms&locale=en', { phone_number: phoneNumber }).then(() => {
       this.setState({ phoneProvidedAndConfirmed: true, phoneNumber });
     }).catch(this.catchErrors);
 
     this.phoneInputRef.value = '';
   };
+
+  tokenLessPost=(url, params) => API.post(url, params, false);
 
   handleSmsCode = () => {
     this.validateSms().then(({ data }) => {
@@ -69,12 +69,12 @@ class Login extends Component {
   }
 
   loginViaSms(data) {
-    return API.post('/v2/auth/login/sms?locale=en',
+    return this.tokenLessPost('/v2/auth/login/sms?locale=en',
             { refresh_token: data.data.refresh_token, phone_number: this.state.phoneNumber });
   }
 
   validateSms() {
-    return API.post('/v2/auth/sms/validate?auth_type=sms&locale=en', {
+    return this.tokenLessPost('/v2/auth/sms/validate?auth_type=sms&locale=en', {
       otp_code: this.smsInputRef.value,
       phone_number: this.state.phoneNumber,
       is_update: false,
