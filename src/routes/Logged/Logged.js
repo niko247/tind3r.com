@@ -149,7 +149,9 @@ class Welcome extends Component {
   handleConnect = () => {
     getFacebookToken();
   };
-
+  handleSmsConnect=() => {
+    location.reload();
+  };
   renderWhenLogged() {
     const { location } = this.props;
     const isModal = !!(location.state && location.state.modal && this.previousLocation !== location); // not initial render
@@ -172,7 +174,7 @@ class Welcome extends Component {
       </div>
     ) : (
       <div className="not-logged">
-        <Login onClick={this.handleConnect}>Your Tinder session has expired.</Login>
+        <Login onClick={this.handleConnect} handleSmsConnect={this.handleSmsConnect}>Your Tinder session has expired.</Login>
       </div>
     );
   }
