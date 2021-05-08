@@ -2,7 +2,11 @@
 
 export type InstagramType = {
   username: string,
-  id: string,
+  completed_initial_fetch: boolean,
+  last_fetch_time: string,
+  media_count: number,
+  photos: [],
+  profile_picture: string
 }
 
 export type PersonType = {
@@ -18,7 +22,6 @@ export type PersonType = {
   name: string,
   photos: [],
   gender: number,
-  distance_mi: number,
   age: string,
 }
 

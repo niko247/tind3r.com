@@ -1,7 +1,6 @@
 import { AppContainer } from 'react-hot-loader';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import LogRocket from 'logrocket';
 
 import App from './App';
 import { load } from './utils/database.v2';

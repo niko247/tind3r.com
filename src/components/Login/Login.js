@@ -40,7 +40,7 @@ class Login extends Component {
 
   handlePhoneNumber = () => {
     const phoneNumber = this.phoneInputRef.value;
-    this.tokenLessPost('/v2/auth/sms/send?auth_type=sms&locale=en', { phone_number: phoneNumber }).then(() => {
+    this.tokenLessPost('/v3/auth/login?locale=en', { phone_number: phoneNumber }).then(() => {
       this.setState({ phoneProvidedAndConfirmed: true, phoneNumber });
     }).catch(this.catchErrors);
 

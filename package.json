@@ -73,7 +73,6 @@
     "forerunnerdb": "^1.4.40",
     "google-map-react": "^0.24.0",
     "html-webpack-plugin": "^2.28.0",
-    "json-server": "^0.9.6",
     "lodash": "^4.17.4",
     "logrocket": "^0.4.3",
     "mobx": "^3.1.5",

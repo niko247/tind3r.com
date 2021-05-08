@@ -31,7 +31,10 @@ chrome.runtime.sendMessage(EXT_ID(), {
   callback: `(details) => {
     details.requestHeaders.forEach((header) => {
       if (header.name === 'User-Agent') {
-        header.value = 'Tinder/6.3.1 (iPhone; iOS 10.0.2; Scale/2.00)';
+        header.value = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.68 Safari/537.36';
+      }
+      if (header.name === 'platform') {
+         header.value = 'web';
       }
       if (header.name === 'Origin') {
         header.value = '';
