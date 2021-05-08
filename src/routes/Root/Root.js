@@ -23,6 +23,7 @@ class App extends Component {
   }
 
   componentDidMount() {
+    console.log("Checking if installed");
     checkIfInstalled((isInstalled) => {
       this.setState({ isInstalled });
 

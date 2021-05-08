@@ -57,6 +57,7 @@ class Login extends Component {
   };
 
   processTinderToken() {
+      console.log("processing token");
     return ({ data }) => {
       chrome.runtime.sendMessage(EXT_ID(), {
         type: 'SAVE_SMS_TOKEN',
